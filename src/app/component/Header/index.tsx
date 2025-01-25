@@ -15,24 +15,44 @@ export const Header = ({ children }: SidebarProps) => {
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar
         position="fixed"
         sx={{
+          borderRight: "1px solid gray",
           backgroundColor: "black",
           height: "70px",
         }}
       >
-        <Toolbar>
-          <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={toggleDrawer} sx={{ mr: 2 }}>
-            {open ? <ArrowBackIcon /> : <MenuIcon />}
-          </IconButton>
-          <div className="flex items-center font-inter font-bold text-2xl">Wallet</div>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between", // Распределение элементов по краям
+            alignItems: "center",
+            height: "100%",
+          }}
+        >
+          <div className="flex items-center">
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={toggleDrawer}
+              sx={{ mr: 2 }}
+            >
+              {open ? <ArrowBackIcon /> : <MenuIcon />}
+            </IconButton>
+            <div className="font-inter font-bold text-2xl">Wallet</div>
+          </div>
+          <div>
+            <UserAccount avatarUrl="/images/avatar.png" name="Admin" />
+          </div>
         </Toolbar>
       </AppBar>
+
       {/* Sidebar Drawer */}
-      <UserAccount avatarUrl="public/images" name="User Name" />
       <Drawer
         sx={{
           width: 400,
@@ -45,11 +65,10 @@ export const Header = ({ children }: SidebarProps) => {
         anchor="left"
         open={open}
       >
-        <List>
+        <List sx={{ bgcolor: 'black', overflow: "hidden", borderRight: "1px solid gray" }}>
           <SideBarList activeItem={"0"} toggleDrawerAction={toggleDrawer} />
         </List>
       </Drawer>
-    </Box >
+    </Box>
   );
 };
-

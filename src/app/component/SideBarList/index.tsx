@@ -24,7 +24,7 @@ export const SideBarList = ({ activeItem, toggleDrawerAction }: SideBarListProps
   };
 
   return (
-    <div className="h-full bg-black text-gray-400 w-full">
+    <div className="h-screen bg-black text-gray-400 w-full">
       <div className="flex items-center justify-between p-4">
         <div className="flex items-center gap-4">
           <img src='/images/logo.png' alt="logo" className="w-25px" />
