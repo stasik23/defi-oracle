@@ -62,14 +62,14 @@ const Login = () => {
                     ...prev,
                     password: validatePassword(value)
                         ? ""
-                        : "Password must be at least 8 characters long, include letters and numbers",
+                        : "Inccorect passwort",
                 }));
                 break;
             case "username":
                 setUsername(value);
                 setErrors((prev) => ({
                     ...prev,
-                    username: validateUsername(value) ? "" : "Username must be at least 3 characters",
+                    username: validateUsername(value) ? "" : "Inccorect username",
                 }));
                 break;
             default:
