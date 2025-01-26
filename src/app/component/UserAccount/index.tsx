@@ -23,7 +23,7 @@ import { ProfileProps } from "@/types/IProfile";
 
 export const UserAccount: React.FC<ProfileProps> = ({ avatarUrl, name }) => {
   return (
-    <div className="bg-gray-900 rounded-xl p-4 shadow-md flex items-center gap-4 w-full max-w-xs">
+    <div className="bg-gray-900 rounded-xl shadow-md flex items-center w-full max-w-xs">
       {/* Аватар */}
       <div className="flex-shrink-0">
         <img

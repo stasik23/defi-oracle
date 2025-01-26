@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Box, Drawer, List, CssBaseline, AppBar, Toolbar, IconButton } from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Menu as MenuIcon } from "@mui/icons-material";
-import { SideBarList } from "../SideBarList";
+import SideBarList from "../SideBarList";
 import { UserAccount } from "../UserAccount";
 
 export interface SidebarProps {
@@ -17,7 +17,7 @@ export const Header = ({ children }: SidebarProps) => {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex"}}>
       <AppBar
         position="fixed"
         sx={{
@@ -30,6 +30,7 @@ export const Header = ({ children }: SidebarProps) => {
           sx={{
             display: "flex",
             justifyContent: "space-between", // Распределение элементов по краям
+            borderBottom: "1px solid gray",
             alignItems: "center",
             height: "100%",
           }}
