@@ -4,11 +4,17 @@ import LocalPostOfficeOutlinedIcon from "@mui/icons-material/LocalPostOfficeOutl
 import FolderSharedIcon from "@mui/icons-material/FolderShared";
 import { Link, Typography, Stack, TextField, Button, InputAdornment, Alert } from "@mui/material";
 import { ReactNode, useState } from "react";
+import { default as axios } from 'axios';
 
 interface IProps {
     placeholder: string;
     icon: ReactNode;
     field: string;
+}
+
+interface ILogin {
+    email: string,
+    password: string
 }
 
 const Login = () => {
@@ -77,6 +83,17 @@ const Login = () => {
         }
     };
 
+    const sendData = async () => {
+        axios.defaults.withCredentials = true;
+        await axios.post("http://localhost:3000/auth/registretion",
+            {
+                name: username,
+                email: email,
+                password: password,
+            },
+        )
+    }
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!validateEmail(email) || !validatePassword(password) || !validateUsername(username)) {
@@ -91,12 +108,7 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
                 <Stack spacing={5} width={400} bgcolor="#323232" alignItems="center" padding={5} margin="0 auto">
                     <img src="/images/logo.png" alt="logo" className="w-[30px] h-[30px]" />
-                    <Stack alignItems="center" color="white">
-                        <Typography variant="h5">Welcome Back</Typography>
-                        <Typography>
-                            Don't have an account yet? <Link href="#">Sign up</Link>
-                        </Typography>
-                    </Stack>
+                    <Typography variant="h5" sx={{color: "white"}}>Welcome to Defi-Oracle</Typography>                        
                     <Stack spacing={2}>
                         {inputs.map((el) => (
                             <TextField
@@ -131,9 +143,10 @@ const Login = () => {
                     <Button
                         type="submit"
                         variant="contained"
+                        onClick={sendData}
                         sx={{ bgcolor: "white", color: "#323232", width: "360px", mt: 2 }}
                     >
-                        Login
+                        Registration
                     </Button>
                 </Stack>
             </form>
